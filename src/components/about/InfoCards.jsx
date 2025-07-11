@@ -19,7 +19,7 @@ const InfoCards = () => (
         <div className="space-y-2 text-sm">
           <p className="font-medium">IT Intern</p>
           <p className="text-graphite-text/70">Kale Pratt & Whitney</p>
-          <p className="text-graphite-text/50">June/2021 - September/2021</p>
+          <p className="text-graphite-text/50">June/2022 - September/2022</p>
         </div>
       </div>
     </AnimatedSection>

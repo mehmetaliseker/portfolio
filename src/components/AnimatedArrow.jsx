@@ -1,25 +1,38 @@
 import { FaArrowRight } from "react-icons/fa";
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
-function AnimatedArrow () {
-  const [rotated, setRotated] = useState(false);
-  const arrowRef = useRef(null);
+function AnimatedArrow({ isHovered, hasUnderline = false }) {
+  const [animation, setAnimation] = useState("");
+
+  useEffect(() => {
+    if (isHovered) {
+      setAnimation("rotate");
+    } else {
+      setAnimation("");
+    }
+  }, [isHovered]);
 
   const handleAnimationEnd = () => {
-    setRotated(true);
+    if (animation === "rotate") {
+      setAnimation("bounce");
+    }
   };
 
   return (
-    <FaArrowRight
-      ref={arrowRef}
-      className={`hidden group-hover:inline-block
-        ${rotated ? 'animate-bounceY' : 'animate-rotateOnce'}
-        transition-opacity duration-300
-      `}
-      onAnimationEnd={handleAnimationEnd}
-      style={{ transformOrigin: 'center' }}
-    />
+    <div className={`relative ${isHovered ? "inline-block" : "hidden"}`}>
+      <FaArrowRight
+        className={`transition-all duration-300
+          ${animation === "rotate" ? "animate-rotateOnce" : ""}
+          ${animation === "bounce" ? "animate-bounceY" : ""}
+        `}
+        onAnimationEnd={handleAnimationEnd}
+        style={{ transformOrigin: "center" }}
+      />
+      {hasUnderline && (
+        <div className="absolute -bottom-2 left-1/2 w-6 h-0.5 bg-graphite-background transform -translate-x-1/2"></div>
+      )}
+    </div>
   );
-};
+}
 
 export default AnimatedArrow;

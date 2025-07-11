@@ -1,5 +1,6 @@
 import AnimatedSection from "../AnimatedSection";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { LuMail } from "react-icons/lu";
 
 function SocialIcons () {
   return (
@@ -28,6 +29,14 @@ function SocialIcons () {
         className="text-white text-3xl z-10 hover:text-graphite-accent hover:cursor-pointer hover:scale-110 transition duration-400"
       >
         <FaInstagram />
+      </a>
+      <a
+        href="mailto:maliseker2005@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white text-3xl z-10 hover:text-graphite-accent hover:cursor-pointer hover:scale-110 transition duration-400"
+      >
+        <LuMail />
       </a>
     </div>
   </AnimatedSection>

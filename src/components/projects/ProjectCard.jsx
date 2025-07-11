@@ -3,14 +3,16 @@ import AnimatedSection from "../AnimatedSection";
 
 const ProjectCard = ({ project, index }) => (
   <AnimatedSection direction="bottom" delay={0.4 + index * 0.3}>
-    <div className="relative bg-graphite-secondary rounded-xl shadow-lg overflow-hidden group transition-transform duration-300 hover:scale-[1.01] border border-graphite-background/30">
+    <div className="relative bg-graphite-secondary rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.01] border border-graphite-background/30">
+
       <div className="relative h-64 w-full overflow-hidden group">
         <img
           src={project.image}
           alt={project.title}
           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-300">
+
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-md opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
           <a
             href={project.github}
             target="_blank"
@@ -30,6 +32,15 @@ const ProjectCard = ({ project, index }) => (
         <p className="text-sm text-graphite-accent">
           {project.technologies.join(", ")}
         </p>
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 border border-graphite-accent text-graphite-accent px-4 py-2 rounded-md transition-all duration-300 hover:scale-105 hover:text-black hover:bg-graphite-accent font-semibold text-sm"
+        >
+          <FaGithub className="transition-transform duration-300 group-hover:scale-110" />
+          Code
+        </a>
       </div>
     </div>
   </AnimatedSection>

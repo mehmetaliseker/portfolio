@@ -10,6 +10,7 @@ export default {
         rotateOnce: 'rotateOnce 0.9s ease forwards',
         bounceY: 'bounceY 1.2s ease-in-out infinite',
         'gradient-shift': 'gradientShift 5s ease infinite',
+        phoneRotate: "phoneRotate 1s linear infinite",
       },
       keyframes: {
         rotateOnce: {
@@ -23,6 +24,11 @@ export default {
         gradientShift: {
           '0%, 100%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
+        },
+        phoneRotate: {
+          "0%": { transform: "rotate(-10deg)" },
+          "50%": { transform: "rotate(10deg)" },
+          "100%": { transform: "rotate(-10deg)" },
         },
       },
       colors: {

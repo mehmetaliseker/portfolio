@@ -5,7 +5,7 @@
     "description": "A promotional website for Ege University, showcasing its history, departments, and campus life with a modern design and responsive layout.",
     "technologies": ["React", "Vite", "JavaScript", "Tailwind CSS", "SOLID"],
     "image": "./egeTanitim.webp",
-    "github": "#"
+    "github": "https://github.com/mehmetaliseker/egeTanitim"
   },
   {
     "id": 2,
@@ -13,6 +13,6 @@
     "description": "A full-stack e-commerce application featuring product management, user authentication, and a shopping cart system, built with PHP, SQL, and JavaScript.",
     "technologies": ["PHP", "SQL", "HTML", "CSS", "JavaScript"],
     "image": "./retroToyz.webp",
-    "github": "#"
+    "github": "https://github.com/mehmetaliseker/Store-app"
   }
 ]

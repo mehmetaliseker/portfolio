@@ -7,10 +7,13 @@ import Projects from './sections/Projects'
 function App() {
   return (
   <>
+  <div className='overflow-x-hidden '>
     <Navbar />
     <Main />
     <About />
-    <Projects />
+    <Projects />    
+  </div>
+
   </>
 
   )
