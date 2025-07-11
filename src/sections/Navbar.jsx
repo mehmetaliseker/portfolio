@@ -9,7 +9,7 @@ function Navbar() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); 
+      setIsMenuOpen(false);
     }
   };
 
@@ -25,9 +25,11 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-graphite-text font-serif">
-              Mehmet Ali ŞEKER
-            </h1>
+            <a href="index.html">
+              <h1 className="text-xl font-bold text-graphite-text font-serif">
+                Mehmet Ali ŞEKER
+              </h1>
+            </a>
           </div>
 
           <div className="hidden sm:block ">
@@ -36,7 +38,7 @@ function Navbar() {
                 <button
                   key={index}
                   onClick={() => scrollToSection(item.section)}
-                  className="relative group text-graphite-text px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-[1.03]"
+                  className="relative group text-graphite-text px-3 py-2 text-sm font-medium transition-all duration-200 hover:scale-[1.05]"
                 >
                   {item.label}
                   <span
