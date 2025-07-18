@@ -14,5 +14,13 @@
     "technologies": ["PHP", "SQL", "HTML", "CSS", "JavaScript"],
     "image": "./retroToyz.webp",
     "github": "https://github.com/mehmetaliseker/Store-app"
+  },
+  {
+    "id": 3,
+    "title": "Weather App",
+    "description": "A weather application that provides real-time weather updates and forecasts using a third-party API, built with React and Tailwind CSS.",
+    "technologies": ["React", "Vite", "Tailwind CSS", "JavaScript", "API", "SOLID"],
+    "image": "./weather.webp",
+    "github": "https://github.com/mehmetaliseker/weatherApp"
   }
 ]
