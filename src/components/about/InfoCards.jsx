@@ -2,7 +2,7 @@ import AnimatedSection from "../AnimatedSection";
 
 const InfoCards = () => (
   <div className="grid md:grid-cols-2 gap-6">
-    <AnimatedSection direction="bottom" delay={1}>
+    <AnimatedSection direction="bottom" delay={.5}>
       <div className="bg-graphite-secondary p-6 rounded-lg shadow-lg border border-graphite-background/30">
         <h4 className="text-lg font-semibold mb-3 text-graphite-accent">Education</h4>
         <div className="space-y-2 text-sm">
@@ -13,7 +13,7 @@ const InfoCards = () => (
       </div>
     </AnimatedSection>
 
-    <AnimatedSection direction="bottom" delay={1.1}>
+    <AnimatedSection direction="bottom" delay={.6}>
       <div className="bg-graphite-secondary p-6 rounded-lg shadow-lg border border-graphite-background/30">
         <h4 className="text-lg font-semibold mb-3 text-graphite-accent">Experience</h4>
         <div className="space-y-2 text-sm">

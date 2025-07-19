@@ -14,7 +14,7 @@ const ProjectList = () => {
 
   return (
     <>
-      <AnimatedSection direction="top" delay={0.2}>
+      <AnimatedSection direction="top" delay={0.02}>
         <h3 className="text-2xl font-semibold mb-8 text-center">Featured Projects</h3>
       </AnimatedSection>
 

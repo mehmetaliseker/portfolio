@@ -13,7 +13,7 @@ function Projects () {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle />
         <ProjectList />
-        <ContactCTA delay={1.2} />
+        <ContactCTA delay={.6} />
       </div>
     </section>
   );

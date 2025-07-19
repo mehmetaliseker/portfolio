@@ -14,7 +14,7 @@ const Skills = () => {
   return (
     <>
 <div className="space-y-6">
-      <AnimatedSection direction="top" delay={0.2}>
+      <AnimatedSection direction="top" delay={0.02}>
         <h3 className="text-2xl font-semibold">My Skills</h3>
       </AnimatedSection>
 
@@ -23,7 +23,7 @@ const Skills = () => {
           <AnimatedSection
             key={index}
             direction="bottom"
-            delay={0.1 + index * 0.05}
+            delay={0.05 + index * 0.02}
           >
             <div className="bg-graphite-secondary border border-graphite-background/30 rounded-lg px-4 py-6 text-center shadow-md hover:shadow-lg transition">
               <p className="text-lg font-semibold">{skill}</p>

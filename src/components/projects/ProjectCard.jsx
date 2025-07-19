@@ -2,7 +2,7 @@ import { FaGithub } from "react-icons/fa";
 import AnimatedSection from "../AnimatedSection";
 
 const ProjectCard = ({ project, index }) => (
-  <AnimatedSection direction="bottom" delay={0.4 + index * 0.3}>
+  <AnimatedSection direction="bottom" delay={0.04 + index * 0.03}>
     <div className="relative bg-graphite-secondary rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.01] border border-graphite-background/30">
 
       <div className="relative h-64 w-full overflow-hidden group">
