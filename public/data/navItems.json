@@ -1,5 +1,12 @@
-[
-  { "label": "Home", "section": "home" },
-  { "label": "About Me", "section": "about" },
-  { "label": "Projects", "section": "projects" }
-]
+{
+  "en": [
+    { "label": "Home", "section": "home" },
+    { "label": "About Me", "section": "about" },
+    { "label": "Projects", "section": "projects" }
+  ],
+  "tr": [
+    { "label": "Anasayfa", "section": "home" },
+    { "label": "Hakkımda", "section": "about" },
+    { "label": "Projeler", "section": "projects" }
+  ]
+}

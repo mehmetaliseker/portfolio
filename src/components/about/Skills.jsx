@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import AnimatedSection from "../AnimatedSection";
+import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Skills = () => {
+  const { t } = useLanguage();
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const Skills = () => {
     <>
 <div className="space-y-6">
       <AnimatedSection direction="top" delay={0.02}>
-        <h3 className="text-2xl font-semibold">My Skills</h3>
+        <h3 className="text-2xl font-semibold">{t('about.skillsTitle')}</h3>
       </AnimatedSection>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">

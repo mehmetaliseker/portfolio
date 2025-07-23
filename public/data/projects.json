@@ -1,24 +1,42 @@
 [
   {
     "id": 1,
-    "title": "Ege University Promotional Web Site",
-    "description": "A promotional website for Ege University, showcasing its history, departments, and campus life with a modern design and responsive layout.",
+    "title": {
+      "en": "Ege University Promotional Web Site",
+      "tr": "Ege Üniversitesi Tanıtım Web Sitesi"
+    },
+    "description": {
+      "en": "A promotional website for Ege University, showcasing its history, departments, and campus life with a modern design and responsive layout.",
+      "tr": "Ege Üniversitesi için hazırlanan, tarihçesini, bölümlerini ve kampüs hayatını modern ve duyarlı bir tasarımla sunan tanıtım sitesi."
+    },
     "technologies": ["React", "Vite", "JavaScript", "Tailwind CSS", "SOLID"],
     "image": "./egeTanitim.webp",
     "github": "https://github.com/mehmetaliseker/egeTanitim"
   },
   {
     "id": 2,
-    "title": "Store App",
-    "description": "A full-stack e-commerce application featuring product management, user authentication, and a shopping cart system, built with PHP, SQL, and JavaScript.",
+    "title": {
+      "en": "Store App",
+      "tr": "Mağaza Uygulaması"
+    },
+    "description": {
+      "en": "A full-stack e-commerce application featuring product management, user authentication, and a shopping cart system, built with PHP, SQL, and JavaScript.",
+      "tr": "PHP, SQL ve JavaScript ile geliştirilmiş; ürün yönetimi, kullanıcı doğrulama ve alışveriş sepeti sistemi içeren tam kapsamlı bir e-ticaret uygulaması."
+    },
     "technologies": ["PHP", "SQL", "HTML", "CSS", "JavaScript"],
     "image": "./retroToyz.webp",
     "github": "https://github.com/mehmetaliseker/Store-app"
   },
   {
     "id": 3,
-    "title": "Weather App",
-    "description": "A weather application that provides real-time weather updates and forecasts using a third-party API, built with React and Tailwind CSS.",
+    "title": {
+      "en": "Weather App",
+      "tr": "Hava Durumu Uygulaması"
+    },
+    "description": {
+      "en": "A weather application that provides real-time weather updates and forecasts using a third-party API, built with React and Tailwind CSS.",
+      "tr": "Gerçek zamanlı hava durumu bilgileri ve tahminleri sunan, üçüncü parti API ile çalışan React ve Tailwind CSS tabanlı bir uygulama."
+    },
     "technologies": ["React", "Vite", "Tailwind CSS", "JavaScript", "API", "SOLID"],
     "image": "./weather.webp",
     "github": "https://github.com/mehmetaliseker/weatherApp"

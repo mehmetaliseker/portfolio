@@ -1,9 +1,11 @@
 import AnimatedSection from "../AnimatedSection";
 import AnimatedArrow from "../AnimatedArrow";
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 
 function HeroButtons () {
   const [hoveredButton, setHoveredButton] = useState(null);
+  const { t } = useLanguage();
 
   return (
     <AnimatedSection delay={0.6}>
@@ -18,7 +20,7 @@ function HeroButtons () {
           hover:bg-graphite-background/35 hover:text-graphite-accent transition-all duration-300 shadow-lg hover:shadow-xl
           flex items-center gap-2 hover:scale-105"
         >
-          View My Projects
+          {t('home.viewProjects')}
           <AnimatedArrow isHovered={hoveredButton === "projects"} />
         </button>
 
@@ -32,7 +34,7 @@ function HeroButtons () {
           hover:bg-graphite-accent hover:text-black transition-all duration-300
           flex items-center gap-2 hover:scale-105"
         >
-          Learn More About Me
+          {t('home.learnMore')}
           <AnimatedArrow isHovered={hoveredButton === "about"} />
         </button>
       </div>

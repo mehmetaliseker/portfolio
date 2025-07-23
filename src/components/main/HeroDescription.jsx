@@ -1,10 +1,13 @@
 import AnimatedSection from "../AnimatedSection";
+import { useLanguage } from '../../context/LanguageContext';
 
-function HeroDescription () {
+const HeroDescription = () => {
+  const { t } = useLanguage();
+
   return (
   <AnimatedSection delay={0.4}>
     <p className="text-lg text-graphite-text leading-relaxed max-w-3xl mx-auto">
-      Welcome to my portfolio! I'm passionate about creating innovative solutions and turning ideas into reality through code. Let's build something amazing together.
+      {t('home.subtitle')}
     </p>
   </AnimatedSection>
 );

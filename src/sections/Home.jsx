@@ -5,7 +5,8 @@ import HeroDescription from "../components/main/HeroDescription";
 import HeroButtons from "../components/main/HeroButtons";
 import SocialIcons from "../components/main/SocialIcons";
 
-function Main () {
+
+function Home () {
   return (
     <section
       id="home"
@@ -14,7 +15,7 @@ function Main () {
       <BackgroundBlobs />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 rounded-xl p-10 space-y-8">
         <HeroTitle />
-        <HeroSubtitle />
+        <HeroSubtitle /> 
         <HeroDescription />
         <HeroButtons />
         <SocialIcons />
@@ -23,4 +24,4 @@ function Main () {
   );
 };
 
-export default Main;
+export default Home;
