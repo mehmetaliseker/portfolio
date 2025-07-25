@@ -45,6 +45,7 @@ const translations = {
         'projects.descriptionCTA': "I'm always open to discussing new opportunities and exciting projects.Let's create something amazing together!",
         'projects.getInTouch': 'Get In Touch',
         'projects.downloadCV': 'Download CV',
+
     },
 
     tr: {
@@ -54,7 +55,7 @@ const translations = {
         'nav.projects': 'Projeler',
 
         // Home Section
-        'home.title': 'Yazılım Geliştirici & Yaratıcı Problem Çözücü',
+        'home.title': 'Yazılım Geliştirici & Problem Çözücü',
         'home.subtitle': "Portföyüme hoş geldiniz! Yenilikçi çözümler üretmek ve fikirleri kod aracılığıyla gerçeğe dönüştürmek konusunda tutkuluyum. Hadi birlikte harika bir şey inşa edelim.",
         'home.viewProjects': 'Projelerime Göz At',
         'home.learnMore': 'Hakkımda Daha Fazla Bilgi',
@@ -91,6 +92,8 @@ const translations = {
         'projects.descriptionCTA': "Yeni fırsatlar ve heyecan verici projeler hakkında konuşmaya her zaman açığım. Hadi birlikte harika bir şey yaratalım!",
         'projects.getInTouch': 'İletişime Geç',
         'projects.downloadCV': 'CV İndir',
+
+
     }
 };
 

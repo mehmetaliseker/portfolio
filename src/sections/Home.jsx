@@ -6,7 +6,7 @@ import HeroButtons from "../components/main/HeroButtons";
 import SocialIcons from "../components/main/SocialIcons";
 
 
-function Home () {
+const Home = () => {
   return (
     <section
       id="home"
