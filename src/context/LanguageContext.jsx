@@ -46,6 +46,10 @@ const translations = {
         'projects.getInTouch': 'Get In Touch',
         'projects.downloadCV': 'Download CV',
 
+        // Footer Section
+        'footer.rights': 'All rights reserved.',
+        'footer.description': 'A Software Developer providing creative and innovative solutions with modern technologies.'
+
     },
 
     tr: {
@@ -93,7 +97,9 @@ const translations = {
         'projects.getInTouch': 'İletişime Geç',
         'projects.downloadCV': 'CV İndir',
 
-
+        // Footer Section
+        'footer.rights': 'Tüm hakları saklıdır.',
+        'footer.description': 'Modern teknolojiler ile yaratıcı ve yenilikçi çözümler sunan bir Software Developer.',
     }
 };
 
