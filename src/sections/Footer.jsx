@@ -35,7 +35,6 @@ function Footer() {
               </p>
             </div>
           </AnimatedSection>
-
           <AnimatedSection direction="top" delay={0.3}>
             <div className="flex-1 min-w-[180px]">
               <h3 className="text-lg font-semibold text-graphite-accent mb-2">
@@ -55,7 +54,6 @@ function Footer() {
               </ul>
             </div>
           </AnimatedSection>
-
           <AnimatedSection direction="top" delay={0.5}>
             <div className="flex-1 min-w-[220px]">
               <h3 className="text-lg font-semibold text-graphite-accent mb-2">
