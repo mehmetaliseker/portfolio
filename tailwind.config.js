@@ -33,11 +33,13 @@ export default {
       },
       colors: {
         graphite: {
-          background: '#1C1C1E',
-          accent: '#FFB347',
-          accentAlt: '#FFB525',
-          secondary: '#2C2C2E',
-          text: '#E5E5E7',
+          background: '#0A0A0A',
+          accent: '#2563EB',
+          accentAlt: '#3B82F6',
+          secondary: '#121212',
+          tertiary: '#1A1A1A',
+          text: '#F5F5F5',
+          textMuted: '#A3A3A3',
         },
       },
     },

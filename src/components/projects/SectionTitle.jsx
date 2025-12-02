@@ -8,12 +8,17 @@ const SectionTitle = () => {
   return (
     <>
       <AnimatedSection direction="top" delay={0}>
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold font-serif mb-4">{t('projects.sectionTitle')}</h2>
-          <div className="w-24 h-1 bg-graphite-accent mx-auto mb-4 rounded-full"></div>
-          <p className="text-lg text-graphite-text/70 max-w-2xl mx-auto">
-            {t('projects.description')}
-          </p>
+        <div className="mb-16">
+          <div className="flex items-center gap-6">
+            <div className="text-6xl font-bold text-graphite-accent/20 leading-none">03</div>
+            <div className="flex-1">
+              <h2 className="text-5xl md:text-6xl font-bold text-graphite-text mb-2">{t('projects.sectionTitle')}</h2>
+              <div className="h-1 w-32 bg-graphite-accent mb-4"></div>
+              <p className="text-lg text-graphite-textMuted max-w-2xl">
+                {t('projects.description')}
+              </p>
+            </div>
+          </div>
         </div>
       </AnimatedSection>
     </>

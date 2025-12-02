@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <LanguageProvider>
-        <div className='overflow-x-hidden '>
+        <div className='overflow-x-hidden bg-graphite-background'>
           <Navbar />
           <Home />
           <About />

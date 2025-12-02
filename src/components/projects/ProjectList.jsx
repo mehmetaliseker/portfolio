@@ -17,11 +17,7 @@ const ProjectList = () => {
 
   return (
     <>
-      <AnimatedSection direction="top" delay={0.02}>
-        <h3 className="text-2xl font-semibold mb-8 text-center">{t('projects.featured')}</h3>
-      </AnimatedSection>
-
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
