@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mehmetaliseker.com/sitemap.xml
+
+# Disallow admin and private paths (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all pages
+Allow: /
+Allow: /about
+Allow: /projects
+Allow: /contact
