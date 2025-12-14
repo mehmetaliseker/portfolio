@@ -1,13 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { FaGithub, FaLinkedin, FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { LuMail } from 'react-icons/lu';
 import emailjs from 'emailjs-com';
-import ShinyText from '../components/ShinyText';
 import Footer from '../components/Footer';
+import { useNavigation } from '../hooks/useNavigation';
 
-const Contact = ({ onPageChange }) => {
+const Contact = () => {
+  const { navigateToPage } = useNavigation();
   const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
@@ -97,42 +98,49 @@ const Contact = ({ onPageChange }) => {
       href: 'https://github.com/mehmetaliseker/',
       label: 'GitHub',
       username: 'mehmetaliseker',
-      labelKey: null
+      labelKey: 'github',
+      id: 'github'
     },
     {
       icon: FaLinkedin,
       href: 'https://www.linkedin.com/in/mehmetaliseker/',
       label: 'LinkedIn',
       username: 'mehmetaliseker',
-      labelKey: null
+      labelKey: 'linkedin',
+      id: 'linkedin'
     },
     {
       icon: LuMail,
       href: 'mailto:maliseker2005@gmail.com',
       label: 'Email',
       username: 'maliseker2005@gmail.com',
-      labelKey: null
+      labelKey: 'email',
+      id: 'email'
     },
     {
       icon: FaInstagram,
       href: 'https://instagram.com/maseker35_',
       label: 'Instagram',
       username: 'maseker35_',
-      labelKey: null
+      labelKey: 'instagram',
+      id: 'instagram'
     },
     {
-      icon: FaPhone,
-      href: 'tel:+905468303055',
-      label: language === 'tr' ? 'Telefon' : 'Phone',
+      icon: FaWhatsapp,
+      href: 'https://wa.me/905468303055?text=Merhaba!',
+      label: 'WhatsApp',
       username: '+90 546 830 30 55',
-      labelKey: 'phone'
+      labelKey: 'whatsapp',
+      id: 'whatsapp',
+      isWhatsApp: true
     },
     {
       icon: FaMapMarkerAlt,
       href: 'https://www.google.com/maps/search/?api=1&query=İzmir,Turkey',
       label: language === 'tr' ? 'Adres' : 'Address',
       username: 'İzmir, Türkiye',
-      labelKey: 'address'
+      labelKey: 'address',
+      id: 'address'
     }
   ];
 
@@ -150,7 +158,7 @@ const Contact = ({ onPageChange }) => {
             >
               <h2
                 className="text-3xl md:text-4xl font-bold mb-8 text-center lg:text-left"
-                style={{ color: '#e8e8e8' }}
+                style={{ color: '#e8e8e8', textShadow: '0 0 12px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)' }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -161,7 +169,7 @@ const Contact = ({ onPageChange }) => {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="inline-block"
                   >
-                    <ShinyText text={t('contact.getInTouch')} speed={1} className="text-[#e8e8e8]" />
+                    {t('contact.getInTouch')}
                   </motion.span>
                 </AnimatePresence>
               </h2>
@@ -435,7 +443,7 @@ const Contact = ({ onPageChange }) => {
             >
               <h2
                 className="text-3xl md:text-4xl font-bold mb-8 text-center lg:text-left"
-                style={{ color: '#e8e8e8' }}
+                style={{ color: '#e8e8e8', textShadow: '0 0 12px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)' }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -446,7 +454,7 @@ const Contact = ({ onPageChange }) => {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="inline-block"
                   >
-                    <ShinyText text={t('contact.connectWithMe')} speed={1} className="text-[#e8e8e8]" />
+                    {t('contact.connectWithMe')}
                   </motion.span>
                 </AnimatePresence>
               </h2>
@@ -504,19 +512,27 @@ const Contact = ({ onPageChange }) => {
                           <Icon size={24} />
                         </div>
                         <div className="flex-1">
-                          <AnimatePresence mode="wait">
-                            <motion.h3
-                              key={`social-label-${social.labelKey || social.label}-${language}`}
-                              initial={{ opacity: 0, y: 5 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -5 }}
-                              transition={{ duration: 0.3, ease: 'easeInOut' }}
-                              className="text-lg font-semibold mb-1"
-                              style={{ color: '#e8e8e8' }}
-                            >
-                              {social.label}
-                            </motion.h3>
-                          </AnimatePresence>
+                          <h3
+                            className="text-lg font-semibold mb-1"
+                            style={{ color: '#e8e8e8' }}
+                          >
+                            {social.labelKey === 'address' ? (
+                              <AnimatePresence mode="wait">
+                                <motion.span
+                                  key={`address-label-${language}`}
+                                  initial={{ opacity: 0, y: 5 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -5 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="inline-block"
+                                >
+                                  {social.label}
+                                </motion.span>
+                              </AnimatePresence>
+                            ) : (
+                              social.label
+                            )}
+                          </h3>
                           <p
                             className="text-sm"
                             style={{ color: '#c8c8c8' }}
@@ -528,10 +544,27 @@ const Contact = ({ onPageChange }) => {
                     </div>
                   );
 
-                  if (social.href) {
+                  if (social.isWhatsApp && social.href) {
                     return (
                       <motion.a
-                        key={social.label}
+                        key={social.id}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      >
+                        {content}
+                      </motion.a>
+                    );
+                  }
+
+                  if (social.href) {
+                    // Tüm linkler için motion.a kullan (adres dahil - ilk yüklemede animasyon olsun)
+                    return (
+                      <motion.a
+                        key={social.id}
                         href={social.href}
                         target={social.href.startsWith('mailto:') || social.href.startsWith('tel:') ? '_self' : '_blank'}
                         rel={social.href.startsWith('mailto:') || social.href.startsWith('tel:') ? '' : 'noopener noreferrer'}
@@ -546,7 +579,7 @@ const Contact = ({ onPageChange }) => {
 
                   return (
                     <motion.div
-                      key={social.label}
+                      key={social.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -560,7 +593,7 @@ const Contact = ({ onPageChange }) => {
           </div>
         </div>
       </div>
-      <Footer onPageChange={onPageChange} isMinimal={true} />
+      <Footer isMinimal={true} />
     </div>
   );
 };

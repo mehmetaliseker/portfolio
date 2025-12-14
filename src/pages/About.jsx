@@ -2,13 +2,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { LogoLoop } from '../components/LogoLoop';
-import ShinyText from '../components/ShinyText';
 import GlareHover from '../components/GlareHover';
 import CountUp from '../components/CountUp';
 import Footer from '../components/Footer';
 import { LuFileText } from 'react-icons/lu';
+import { useNavigation } from '../hooks/useNavigation';
 
-const About = ({ onPageChange }) => {
+const About = () => {
+  const { navigateToPage } = useNavigation();
   const { t, language } = useLanguage();
   const [animationsComplete, setAnimationsComplete] = useState(false);
   const [completedAnimations, setCompletedAnimations] = useState(new Set());
@@ -247,7 +248,7 @@ const About = ({ onPageChange }) => {
               {/* Başlık */}
               <h2
                 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8 text-center"
-                style={{ color: '#e8e8e8' }}
+                style={{ color: '#e8e8e8', textShadow: '0 0 12px rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.15)' }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -258,7 +259,7 @@ const About = ({ onPageChange }) => {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="inline-block"
                   >
-                    <ShinyText text={t('about.whoamiTitle')} speed={1} className="text-[#e8e8e8]" />
+                    {t('about.whoamiTitle')}
                   </motion.span>
                 </AnimatePresence>
               </h2>
@@ -273,13 +274,9 @@ const About = ({ onPageChange }) => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="text-base md:text-md leading-relaxed"
-                    style={{ color: '#c8c8c8' }}
+                    style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
-                    <ShinyText 
-                      text={t('about.whoami.1')} 
-                      speed={1} 
-                      className="text-[#c8c8c8] block" 
-                    />
+                    {t('about.whoami.1')}
                   </motion.p>
                 </AnimatePresence>
                 <AnimatePresence mode="wait">
@@ -290,13 +287,9 @@ const About = ({ onPageChange }) => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="text-base md:text-md leading-relaxed"
-                    style={{ color: '#c8c8c8' }}
+                    style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
-                    <ShinyText 
-                      text={t('about.whoami.2')} 
-                      speed={1} 
-                      className="text-[#c8c8c8] block" 
-                    />
+                    {t('about.whoami.2')}
                   </motion.p>
                 </AnimatePresence>
                 <AnimatePresence mode="wait">
@@ -307,13 +300,9 @@ const About = ({ onPageChange }) => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="text-base md:text-md leading-relaxed"
-                    style={{ color: '#c8c8c8' }}
+                    style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
-                    <ShinyText 
-                      text={t('about.whoami.3')} 
-                      speed={1} 
-                      className="text-[#c8c8c8] block" 
-                    />
+                    {t('about.whoami.3')}
                   </motion.p>
                 </AnimatePresence>
               </div>
@@ -567,7 +556,7 @@ const About = ({ onPageChange }) => {
           </div>
         </div>
       </div>
-      <Footer onPageChange={onPageChange} isMinimal={true} />
+      <Footer isMinimal={true} />
     </div>
   );
 };

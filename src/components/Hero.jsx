@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, forwardRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useNavigation } from '../hooks/useNavigation';
 import SocialIcons from './SocialIcons';
-import ShinyText from './ShinyText';
 
 const Hero = forwardRef((props, ref) => {
   const [isHovered, setIsHovered] = useState(false);
   const { t, language } = useLanguage();
+  const { navigateToPage } = useNavigation();
 
   return (
     <div 
@@ -34,7 +35,7 @@ const Hero = forwardRef((props, ref) => {
           textShadow: '0 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1)'
         }}
       >
-        <ShinyText text="Mehmet Ali ŞEKER" speed={2} className="text-[#e8e8e8]" />
+        <span className="text-[#e8e8e8]" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)' }}>Mehmet Ali ŞEKER</span>
       </motion.h1>
       
       <motion.p
@@ -55,7 +56,7 @@ const Hero = forwardRef((props, ref) => {
           textShadow: '0 2px 6px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.08)'
         }}
       >
-        <ShinyText text="Full-Stack Developer" speed={2} className="text-[#e2e2e2]" />
+        <span className="text-[#e2e2e2]" style={{ textShadow: '0 0 12px rgba(255, 255, 255, 0.25), 0 0 25px rgba(255, 255, 255, 0.12)' }}>Full-Stack Developer</span>
       </motion.p>
 
       <motion.p
@@ -86,7 +87,7 @@ const Hero = forwardRef((props, ref) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="inline-block"
           >
-            <ShinyText text={t('home.subtitle')} speed={4} className="text-[#e2e2e2]" />
+            <span className="text-[#e2e2e2]" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1)' }}>{t('home.subtitle')}</span>
           </motion.span>
         </AnimatePresence>
       </motion.p>
@@ -103,7 +104,7 @@ const Hero = forwardRef((props, ref) => {
             ease: [0.22, 1, 0.36, 1]
           }
         }}
-        onClick={() => props.onPageChange && props.onPageChange('about')}
+        onClick={() => navigateToPage('about')}
         className="px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg font-semibold mb-6 sm:mb-8 md:mb-10 learn-more-button inline-block text-sm sm:text-base"
         style={{
           background: 'transparent',

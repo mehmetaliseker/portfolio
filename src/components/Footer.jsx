@@ -1,16 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { memo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useNavigation } from '../hooks/useNavigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { LuMail } from 'react-icons/lu';
 
-const Footer = ({ onPageChange, isMinimal = false }) => {
+const Footer = memo(({ isMinimal = false }) => {
   const { t, language } = useLanguage();
-  
-  const handlePageChange = (page) => {
-    if (onPageChange) {
-      onPageChange(page);
-    }
-  };
+  const { navigateToPage } = useNavigation();
 
   if (isMinimal) {
     return (
@@ -78,7 +75,7 @@ const Footer = ({ onPageChange, isMinimal = false }) => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -10 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
-                        onClick={() => handlePageChange(link.page)}
+                        onClick={() => navigateToPage(link.page)}
                         className="text-sm transition-all duration-300 hover:text-white relative"
                         style={{ color: '#c8c8c8' }}
                         onMouseEnter={(e) => {
@@ -427,6 +424,8 @@ const Footer = ({ onPageChange, isMinimal = false }) => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

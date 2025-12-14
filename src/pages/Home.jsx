@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import Hero from '../components/Hero';
 
-const Home = ({ onPageChange }) => {
+const Home = () => {
   const heroRef = useRef(null);
 
-  return <Hero ref={heroRef} onPageChange={onPageChange} />;
+  return <Hero ref={heroRef} />;
 };
 
 export default Home;

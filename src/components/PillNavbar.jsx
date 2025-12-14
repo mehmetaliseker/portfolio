@@ -1,45 +1,38 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, memo, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useNavigation } from '../hooks/useNavigation';
+import { usePage } from '../hooks/usePage';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import LanguageSwitch from './LanguageSwitch';
 
-const PillNavbar = ({ currentPage, onPageChange }) => {
-  const { t, language } = useLanguage();
-  
-  const navItems = [
-    { label: t('nav.home'), page: 'home' },
-    { label: t('nav.about'), page: 'about' },
-    { label: t('nav.projects'), page: 'projects' },
-    { label: t('nav.contact'), page: 'contact' }
-  ];
-
+const PillNavbar = memo(() => {
+  const { language } = useLanguage();
+  const { navigateToPage, currentPage } = useNavigation();
+  const { navItems } = usePage();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Body scroll lock hook
+  useBodyScrollLock(isMobileMenuOpen);
+
+  // Active index'i hesapla
   useEffect(() => {
-    const index = navItems.findIndex(item => item.page === currentPage);
+    const index = navItems.findIndex(item => item.name === currentPage);
     if (index !== -1) {
       setActiveIndex(index);
     }
-  }, [currentPage]);
+  }, [currentPage, navItems]);
 
-  // Mobil menü açıkken body scroll'unu engelle
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
-  const handleNavClick = (page) => {
-    onPageChange(page);
+  const handleNavClick = useCallback((pageName) => {
+    navigateToPage(pageName);
     setIsMobileMenuOpen(false);
-  };
+  }, [navigateToPage]);
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
 
   return (
     <>
@@ -48,7 +41,7 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-auto w-full max-w-4xl"
+          className="pointer-events-auto w-full md:w-auto"
         >
           <div
             className="flex items-center justify-between md:justify-center gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-full backdrop-blur-xl border border-white/10"
@@ -70,10 +63,10 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
 
                 return (
                   <motion.button
-                    key={item.page}
+                    key={item.name}
                     onClick={() => {
                       setActiveIndex(index);
-                      onPageChange(item.page);
+                      handleNavClick(item.name);
                     }}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
@@ -87,7 +80,7 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
                   >
                     <AnimatePresence mode="wait">
                       <motion.span
-                        key={`${item.page}-${language}`}
+                        key={`${item.name}-${language}`}
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
@@ -125,7 +118,7 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
 
             {/* Hamburger menu button - sadece mobil/tablet */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
               className="md:hidden relative w-7 h-9 cursor-pointer z-50"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
@@ -173,8 +166,8 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
                 const isActive = index === activeIndex;
                 return (
                   <motion.button
-                    key={item.page}
-                    onClick={() => handleNavClick(item.page)}
+                    key={item.name}
+                    onClick={() => handleNavClick(item.name)}
                     className="text-2xl md:text-3xl font-medium py-3 px-6 rounded-lg transition-all duration-300 relative"
                     style={{
                       color: isActive ? '#FFFFFF' : '#C8C8C8',
@@ -184,7 +177,7 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
                   >
                     <AnimatePresence mode="wait">
                       <motion.span
-                        key={`mobile-${item.page}-${language}`}
+                        key={`mobile-${item.name}-${language}`}
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
@@ -222,6 +215,8 @@ const PillNavbar = ({ currentPage, onPageChange }) => {
       </AnimatePresence>
     </>
   );
-};
+});
+
+PillNavbar.displayName = 'PillNavbar';
 
 export default PillNavbar;

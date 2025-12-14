@@ -2,10 +2,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import useGitHubProjects from '../hooks/useGitHubProjects';
 import ProjectCard from '../components/ProjectCard';
-import ShinyText from '../components/ShinyText';
 import Footer from '../components/Footer';
 
-const Projects = ({ onPageChange }) => {
+import { useNavigation } from '../hooks/useNavigation';
+
+const Projects = () => {
+  const { navigateToPage } = useNavigation();
   const { t, language } = useLanguage();
   const { projects, loading, error } = useGitHubProjects('mehmetaliseker', language);
 
@@ -22,7 +24,7 @@ const Projects = ({ onPageChange }) => {
           >
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
-              style={{ color: '#e8e8e8' }}
+              style={{ color: '#e8e8e8', textShadow: '0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.15)' }}
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -33,7 +35,7 @@ const Projects = ({ onPageChange }) => {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="inline-block"
                 >
-                  <ShinyText text={t('projects.title')} speed={1} className="text-[#e8e8e8]" />
+                  {t('projects.title')}
                 </motion.span>
               </AnimatePresence>
             </h1>
@@ -115,7 +117,7 @@ const Projects = ({ onPageChange }) => {
           )}
         </div>
       </div>
-      <Footer onPageChange={onPageChange} />
+      <Footer />
     </div>
   );
 };
