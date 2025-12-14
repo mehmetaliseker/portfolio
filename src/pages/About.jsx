@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, memo, lazy, Suspense } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { LogoLoop } from '../components/LogoLoop';
 import GlareHover from '../components/GlareHover';
@@ -7,8 +7,9 @@ import CountUp from '../components/CountUp';
 import Footer from '../components/Footer';
 import { LuFileText } from 'react-icons/lu';
 import { useNavigation } from '../hooks/useNavigation';
+import { SkeletonCard } from '../components/Skeleton';
 
-const About = () => {
+const About = memo(() => {
   const { navigateToPage } = useNavigation();
   const { t, language } = useLanguage();
   const [animationsComplete, setAnimationsComplete] = useState(false);
@@ -66,6 +67,7 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center lg:items-center"
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Yuvarlak Profil Fotoğrafı */}
               <div className="relative mb-12 flex justify-center lg:justify-center">
@@ -95,8 +97,13 @@ const About = () => {
                   alt="Mehmet Ali ŞEKER"
                   className="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white/20 z-10"
                   style={{
-                    filter: 'grayscale(100%) contrast(1.1)'
+                    filter: 'grayscale(100%) contrast(1.1)',
+                    willChange: 'transform',
+                    transform: 'translate3d(0, 0, 0)'
                   }}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </div>
 
@@ -112,7 +119,7 @@ const About = () => {
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -5 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
                       className="inline-block"
                     >
                       {t('about.skillsTitle')}
@@ -136,8 +143,12 @@ const About = () => {
                         style={{
                           filter: 'brightness(0) invert(1)',
                           transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-                          opacity: 1
+                          opacity: 1,
+                          willChange: 'transform',
+                          transform: 'translate3d(0, 0, 0)'
                         }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     )}
                   />
@@ -180,7 +191,7 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                             className="inline-block"
                           >
                             {t('about.projects')}
@@ -225,7 +236,7 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                             className="inline-block"
                           >
                             {t('about.successRate')}
@@ -244,6 +255,7 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-8"
+              style={{ willChange: 'transform, opacity' }}
             >
               {/* Başlık */}
               <h2
@@ -256,7 +268,7 @@ const About = () => {
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="inline-block"
                   >
                     {t('about.whoamiTitle')}
@@ -269,10 +281,10 @@ const About = () => {
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={`whoami-1-${language}`}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="text-base md:text-md leading-relaxed"
                     style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
@@ -282,10 +294,10 @@ const About = () => {
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={`whoami-2-${language}`}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="text-base md:text-md leading-relaxed"
                     style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
@@ -295,10 +307,10 @@ const About = () => {
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={`whoami-3-${language}`}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="text-base md:text-md leading-relaxed"
                     style={{ color: '#c8c8c8', textShadow: '0 0 8px rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.08)' }}
                   >
@@ -345,10 +357,10 @@ const About = () => {
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={`cv-${language}`}
-                          initial={{ opacity: 0, y: 5 }}
+                          initial={{ opacity: 0, y: 3 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -5 }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          exit={{ opacity: 0, y: -3 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
                           className="cv-text text-lg md:text-xl font-semibold transition-all duration-300 inline-block"
                           style={{ 
                             color: '#e8e8e8'
@@ -394,7 +406,7 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                             className="inline-block"
                           >
                             {t('about.education.title')}
@@ -412,7 +424,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.education.degree')}
@@ -429,7 +441,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.education.university')}
@@ -446,7 +458,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.education.years')}
@@ -488,7 +500,7 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2 }}
                             className="inline-block"
                           >
                             {t('about.experience.title')}
@@ -506,7 +518,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.experience.position')}
@@ -523,7 +535,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.experience.company')}
@@ -540,7 +552,7 @@ const About = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              transition={{ duration: 0.3 }}
+                              transition={{ duration: 0.2 }}
                               className="inline-block"
                             >
                               {t('about.experience.years')}
@@ -559,6 +571,7 @@ const About = () => {
       <Footer isMinimal={true} />
     </div>
   );
-};
+});
 
+About.displayName = 'About';
 export default About;

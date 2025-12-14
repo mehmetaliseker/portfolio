@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, memo } from 'react';
 
-const GlareHover = ({
+const GlareHover = memo(({
   width = '500px',
   height = '500px',
   background = '#000',
@@ -79,7 +79,9 @@ const GlareHover = ({
     backgroundSize: `${glareSize}% ${glareSize}%, 100% 100%`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '-100% -100%, 0 0',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    willChange: 'background-position',
+    transform: 'translate3d(0, 0, 0)'
   };
 
   return (
@@ -99,6 +101,7 @@ const GlareHover = ({
       {children}
     </div>
   );
-};
+});
 
+GlareHover.displayName = 'GlareHover';
 export default GlareHover;

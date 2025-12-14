@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { memo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { FaGithub } from 'react-icons/fa';
 import SpotlightCard from './SpotlightCard';
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = memo(({ project, index }) => {
   const { t, language } = useLanguage();
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -50,6 +51,7 @@ const ProjectCard = ({ project, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
+      style={{ willChange: 'transform, opacity' }}
     >
       <SpotlightCard className="backdrop-blur-sm">
         <div className="p-6 w-full">
@@ -82,10 +84,10 @@ const ProjectCard = ({ project, index }) => {
             <AnimatePresence mode="wait">
               <motion.p
                 key={`desc-${project.id}-${language}`}
-                initial={{ opacity: 0, y: 5 }}
+                initial={{ opacity: 0, y: 3 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                exit={{ opacity: 0, y: -3 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
                 className="text-sm mb-4"
                 style={{ color: '#c8c8c8' }}
               >
@@ -103,7 +105,7 @@ const ProjectCard = ({ project, index }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15 }}
                   className="text-xs"
                   style={{ color: '#a8a8a8' }}
                 >
@@ -116,7 +118,7 @@ const ProjectCard = ({ project, index }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15 }}
                   className="text-xs font-medium"
                   style={{ color: '#c8c8c8' }}
                 >
@@ -131,7 +133,7 @@ const ProjectCard = ({ project, index }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15 }}
                   className="text-xs"
                   style={{ color: '#a8a8a8' }}
                 >
@@ -144,7 +146,7 @@ const ProjectCard = ({ project, index }) => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15 }}
                   className="text-xs font-medium"
                   style={{ color: '#c8c8c8' }}
                 >
@@ -177,7 +179,7 @@ const ProjectCard = ({ project, index }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.15 }}
                 className="inline-block"
               >
                 {t('projects.seeOnGitHub')}
@@ -188,6 +190,7 @@ const ProjectCard = ({ project, index }) => {
       </SpotlightCard>
     </motion.div>
   );
-};
+});
 
+ProjectCard.displayName = 'ProjectCard';
 export default ProjectCard;

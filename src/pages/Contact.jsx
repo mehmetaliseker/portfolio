@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { LuMail } from 'react-icons/lu';
@@ -7,7 +7,7 @@ import emailjs from 'emailjs-com';
 import Footer from '../components/Footer';
 import { useNavigation } from '../hooks/useNavigation';
 
-const Contact = () => {
+const Contact = memo(() => {
   const { navigateToPage } = useNavigation();
   const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
@@ -155,6 +155,7 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="w-full"
+              style={{ willChange: 'transform, opacity' }}
             >
               <h2
                 className="text-3xl md:text-4xl font-bold mb-8 text-center lg:text-left"
@@ -166,7 +167,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="inline-block"
                   >
                     {t('contact.getInTouch')}
@@ -179,7 +180,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   className="text-base md:text-lg mb-8 text-center lg:text-left"
                   style={{ color: '#c8c8c8' }}
                 >
@@ -220,7 +221,7 @@ const Contact = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.15 }}
                             className="inline-block"
                           >
                             {t('contact.form.name')} <span style={{ color: '#ff4444' }}>*</span>
@@ -252,7 +253,7 @@ const Contact = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.15 }}
                             className="inline-block"
                           >
                             {t('contact.form.email')} <span style={{ color: '#ff4444' }}>*</span>
@@ -287,7 +288,7 @@ const Contact = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.15 }}
                             className="inline-block"
                           >
                             {t('contact.form.phone')}
@@ -318,7 +319,7 @@ const Contact = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.15 }}
                             className="inline-block"
                           >
                             {t('contact.form.subject')} <span style={{ color: '#ff4444' }}>*</span>
@@ -351,7 +352,7 @@ const Contact = () => {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.2 }}
+                          transition={{ duration: 0.15 }}
                           className="inline-block"
                         >
                           {t('contact.form.message')} <span style={{ color: '#ff4444' }}>*</span>
@@ -423,7 +424,7 @@ const Contact = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.15 }}
                         className="inline-block"
                       >
                         {isSubmitting ? t('contact.form.sending') : t('contact.form.sendButton')}
@@ -440,6 +441,7 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="w-full"
+              style={{ willChange: 'transform, opacity' }}
             >
               <h2
                 className="text-3xl md:text-4xl font-bold mb-8 text-center lg:text-left"
@@ -451,7 +453,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="inline-block"
                   >
                     {t('contact.connectWithMe')}
@@ -464,7 +466,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   className="text-base md:text-lg mb-8 text-center lg:text-left"
                   style={{ color: '#c8c8c8' }}
                 >
@@ -520,10 +522,10 @@ const Contact = () => {
                               <AnimatePresence mode="wait">
                                 <motion.span
                                   key={`address-label-${language}`}
-                                  initial={{ opacity: 0, y: 5 }}
+                                  initial={{ opacity: 0, y: 3 }}
                                   animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -5 }}
-                                  transition={{ duration: 0.2 }}
+                                  exit={{ opacity: 0, y: -3 }}
+                                  transition={{ duration: 0.15 }}
                                   className="inline-block"
                                 >
                                   {social.label}
@@ -596,6 +598,7 @@ const Contact = () => {
       <Footer isMinimal={true} />
     </div>
   );
-};
+});
 
+Contact.displayName = 'Contact';
 export default Contact;

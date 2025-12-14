@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { LuMail } from "react-icons/lu";
 
-const SocialIcons = () => {
+const SocialIcons = memo(() => {
   const socialLinks = [
     {
       icon: FaGithub,
@@ -43,13 +44,15 @@ const SocialIcons = () => {
             aria-label={social.label}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = '#FFFFFF';
-              e.currentTarget.style.transform = 'scale(1.1)';
+              e.currentTarget.style.transform = 'translate3d(0, 0, 0) scale(1.1)';
               e.currentTarget.style.filter = 'drop-shadow(0 0 12px rgba(255, 255, 255, 0.5))';
+              e.currentTarget.style.willChange = 'transform';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.color = '#E8E8E8';
-              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.transform = 'translate3d(0, 0, 0) scale(1)';
               e.currentTarget.style.filter = 'none';
+              e.currentTarget.style.willChange = 'auto';
             }}
           >
             <Icon />
@@ -62,6 +65,7 @@ const SocialIcons = () => {
       })}
     </div>
   );
-};
+});
 
+SocialIcons.displayName = 'SocialIcons';
 export default SocialIcons;

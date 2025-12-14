@@ -5,6 +5,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import PillNavbar from './components/PillNavbar';
 import ColorBendsBackground from './components/Background/ColorBendsBackground';
 import ScrollToTop from './components/ScrollToTop';
+import SEO from './components/SEO';
 import { routeConfig, ROUTES } from './config/routes';
 import { navigationService } from './services/NavigationService';
 import { useNavigation } from './hooks/useNavigation';
@@ -41,6 +42,7 @@ function App() {
         }}
       >
         <NavigationProvider>
+          <SEO />
           <div 
             id="scroll-container"
             className="relative w-full h-screen overflow-y-auto overflow-x-hidden" 
