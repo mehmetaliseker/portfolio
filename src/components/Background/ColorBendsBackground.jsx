@@ -13,10 +13,10 @@ const ColorBendsBackground = memo(() => {
         colors={[
           '#040404',
           '#0b0b0b',
-          '#14111a', // muted purple
-          '#10141c', // cold blue
-          '#1a1410', // muted amber
-          '#150f12', // dark wine red
+          '#14111a',
+          '#10141c',
+          '#1a1410',
+          '#150f12', 
           '#0c0c0c',
         ]}
         transparent={true}
