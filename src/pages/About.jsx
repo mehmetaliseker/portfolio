@@ -95,15 +95,28 @@ const About = memo(() => {
                 <img
                   src="/mehmet_ali_nobg.png"
                   alt="Mehmet Ali ŞEKER"
-                  className="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white/20 z-10"
+                  className="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white/20 z-10 select-none"
                   style={{
                     filter: 'grayscale(100%) contrast(1.1)',
                     willChange: 'transform',
-                    transform: 'translate3d(0, 0, 0)'
+                    transform: 'translate3d(0, 0, 0)',
+                    userSelect: 'none',
+                    WebkitUserSelect: 'none',
+                    MozUserSelect: 'none',
+                    msUserSelect: 'none',
+                    WebkitUserDrag: 'none',
+                    KhtmlUserDrag: 'none',
+                    MozUserDrag: 'none',
+                    OUserDrag: 'none',
+                    userDrag: 'none'
                   }}
                   loading="eager"
                   decoding="async"
                   fetchPriority="high"
+                  draggable="false"
+                  onDragStart={(e) => e.preventDefault()}
+                  onContextMenu={(e) => e.preventDefault()}
+                  onMouseDown={(e) => e.preventDefault()}
                 />
               </div>
 
